@@ -1,0 +1,40 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+df=pd.read_csv("Churn_Modelling.csv")
+print(df)
+print(df.head(10))
+print(df.tail(10))
+print(df.describe())
+age = df['Age']
+tenure = df['Tenure']
+plt.figure(figsize=(10, 6))
+plt.scatter(age, tenure, color='blue', alpha=0.5)
+plt.title('Age vs. Tenure')
+plt.xlabel('Age')
+plt.ylabel('Tenure (Years)')
+plt.grid(True)
+plt.show()
+credit_scores = df['CreditScore']
+plt.figure(figsize=(10, 6))
+plt.hist(credit_scores, bins=30, color='skyblue', edgecolor='black')  # Adjust the number of bins as needed
+plt.title('Distribution of Credit Scores')
+plt.xlabel('Credit Score')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.show()
+geo_counts = df['Geography'].value_counts()
+plt.figure(figsize=(8, 6))
+geo_counts.plot(kind='bar', color='skyblue')
+plt.title('Number of Customers by Geography')
+plt.xlabel('Geography')
+plt.ylabel('Number of Customers')
+plt.xticks(rotation=45)  
+plt.grid(axis='y')
+plt.show()
+exit_counts = df['Exited'].value_counts()
+plt.figure(figsize=(8, 6))
+exit_counts.plot(kind='pie', autopct='%1.1f%%', colors=['skyblue', 'orange'], labels=['Not Exited', 'Exited'])
+plt.title('Proportion of Customers Exited vs Not Exited')
+plt.ylabel('') 
+plt.show()
